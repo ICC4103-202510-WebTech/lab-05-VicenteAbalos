@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Index</title>
+</head>
+<body>
+    <div class="container-fluid bg-primary">
+        <h1>User Index</h1>
+    </div>
+    <div class="container-sm bg-secondary">
+        <table class="table table-striped">
+            <tr>
+                <th>User</th>
+                <th>User Page</th>
+            </tr>
+            <% @users.each do |user| %>
+                <tr>
+                    <td>
+                        <%= user.first_name %>
+                    </td>
+                    <td>
+                        <button type="button" class="btn bg-primary-subtle"><%= link_to("View",user_path(user)) %></button>
+                    </td>
+                </tr>
+            <% end%>
+        </table>
+    </div>
+</body>

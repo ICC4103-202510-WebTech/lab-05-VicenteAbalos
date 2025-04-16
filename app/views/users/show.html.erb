@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= @user.first_name %></title>
+</head>
+<body class="bg-primary-subtle">
+    <div class="container-sm card bg-secondary-subtle">
+        <h1 class="text-center card-title bg-danger-subtle"><%= @user.first_name %> <%= @user.last_name %></h1>
+        <div class="card-body bg-secondary-subtle">
+            <li class="card-text bg-warning-subtle">
+                <a href="#"><%=@user.email %></a>
+            </li>
+            <li class="card-text bg-success-subtle">
+                Created on <%= @user.created_at %>
+            </li>
+            <li class="card-text bg-warning-subtle">
+                Last updated on <%= @user.updated_at %>
+            </li>
+        </div>
+    </div>
+</body>
+<footer>
+    <div class="container-sm">
+        <button type="button" class="btn bg-light"><%= link_to "Volver",users_path %></button>
+    </div>
+</footer>

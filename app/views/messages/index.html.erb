@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Index</title>
+</head>
+<body>
+    <div class="container-fluid bg-primary">
+        <h1>Message Index</h1>
+    </div>
+    <div class="container-sm bg-secondary">
+        <table class="table table-striped">
+            <tr>
+                <th>Message</th>
+                <th>Message Page</th>
+            </tr>
+            <% @messages.each do |message| %>
+                <tr>
+                    <td>
+                        Message for Chat #<%= message.chat_id %>
+                    </td>
+                    <td>
+                        <button type="button" class="btn bg-primary-subtle"><%= link_to("View",message_path(message)) %></button>
+                    </td>
+                </tr>
+            <% end%>
+        </table>
+    </div>
+</body>

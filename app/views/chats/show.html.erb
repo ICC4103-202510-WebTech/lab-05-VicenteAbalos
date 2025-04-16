@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= User.find(@chat.sender_id).first_name %></title>
+</head>
+<body class="bg-primary-subtle">
+    <br>
+    <div class="container-sm card bg-secondary-subtle">
+        <h1 class="text-center card-title bg-danger-subtle"><%= User.find(@chat.sender_id).first_name %> & <%= User.find(@chat.receiver_id).first_name %></h1>
+        <div class="card-body bg-secondary-subtle">
+            <li class="card-text bg-success-subtle">
+                Sender ID: <%=@chat.sender_id %><br>
+            </li>
+            <li class="card-text bg-warning-subtle">
+                Receiver ID: <%=@chat.receiver_id %>
+            </li>
+            <li class="card-text bg-success-subtle">
+                Created on <%= @chat.created_at %>
+            </li>
+            <li class="card-text bg-warning-subtle">
+                Last updated on <%= @chat.updated_at %>
+            </li>
+        </div>
+        <br>
+    </div>
+</body>
+<footer>
+    <div class="container-sm content-align-right">
+        <button type="button" class="btn bg-light"><%= link_to "Volver",chats_path %></button>
+    </div>
+</footer>
