@@ -5,4 +5,20 @@ class ChatsController < ApplicationController
     def show
         @chat = Chat.find_by(params["id"])
     end
+    def new
+        @chat = Chat.new
+    end
+    def create
+        @chat = Chat.new user_params
+        if @chat.save
+            redirect_to chats_path
+        else
+            render :new
+        end
+    end
+
+    private
+    def user_params
+        params.require(:chat).permit(:sender_id, :receiver_id)
+    end
 end

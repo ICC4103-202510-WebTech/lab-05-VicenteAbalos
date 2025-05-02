@@ -1,0 +1,30 @@
+<h1>Chat Form</h1>
+
+<div class="container-sm">
+<%= form_with model: @chat do |form| %>
+    <div class="container-sm d-flex p-2">
+        <%=form.label :sender_id, "Sender" %>
+        <%=form.select :sender_id, User.all.collect { |user| [user.first_name,user.id]}, class: 'form-control', required: true %>
+    </div>
+    <div class="container-sm d-flex p-2">
+        <%=form.label :receiver_id, "Receiver" %>
+        <%=form.select :receiver_id, User.all.collect { |user| [user.first_name,user.id]}, class: 'form-control', required: true %>
+    </div>
+    <div>
+        <%= form.submit "Save" %>
+    </div>
+<% end %>
+</div>
+<div>
+    <% if @chat.errors.any? %>
+        <div class="container-sm">
+        <% @chat.errors.each do |error| %>
+            <h1>
+            <span class="badge text-bg-success">
+                <%= error.full_message %>
+            </span>
+            </h1>
+        <% end %>
+        </div>
+    <% end %>
+</div>
