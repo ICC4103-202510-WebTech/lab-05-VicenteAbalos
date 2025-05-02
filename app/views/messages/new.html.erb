@@ -22,7 +22,11 @@
 <div>
     <% if @message.errors.any? %>
         <% @message.errors.each do |error| %>
+            <h1>
+            <span class="badge text-bg-success">
             <%= error.full_message %>
+            </span>
+            </h1>
         <% end %>
     <% end %>
 </div>
