@@ -15,6 +15,7 @@
             <tr>
                 <th>Chat</th>
                 <th>Chat Page</th>
+                <th>Edit Chat</th>
             </tr>
             <% @chats.each do |chat| %>
                 <tr>
@@ -22,13 +23,16 @@
                         Chat from <%= User.find(chat.sender_id).first_name %> to <%= User.find(chat.receiver_id).first_name %>
                     </td>
                     <td>
-                        <button type="button" class="btn bg-primary-subtle"><%= link_to("View",chat_path(chat)) %></button>
+                        <%= link_to("View", chat_path(chat), class:"btn bg-primary-subtle") %>
+                    </td>
+                    <td>
+                        <%= link_to("Edit",edit_chat_path(chat), class: "btn bg-primary-subtle")%>
                     </td>
                 </tr>
             <% end%>
         </table>
     </div>
-    <div>
-        <button type="button" class="btn bg-success-subtle"><%= link_to "New Chat", new_chat_path %></button>
+    <div class="container-sm">
+        <%= link_to "New Chat", new_chat_path, class:"btn bg-success-subtle" %>
     </div>
 </body>

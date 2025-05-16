@@ -1,0 +1,19 @@
+<div class="container-sm">
+<%= form_with model: @user do |form| %>
+    <div class="container-sm">
+        <%=form.label :first_name, "Name", class: "bg-secondary-subtle" %>
+        <%=form.text_field :first_name, class: 'form-control'%>
+    </div>
+    <div class="container-sm">
+        <%=form.label :last_name, "Last Name", class: "bg-secondary-subtle" %>
+        <%=form.text_field :last_name, class: 'form-control'%>
+    </div>
+    <div class="container-sm">
+        <%=form.label :email, "Email", class: "bg-secondary-subtle" %>
+        <%=form.text_field :email, class: 'form-control'%>
+    </div>
+    <div>
+        <%= form.submit "Save", class:"btn btn-primary"%> <%= link_to "Cancel",users_path, class:"btn btn-danger"%>
+    </div>
+<% end %>
+</div>

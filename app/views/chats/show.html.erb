@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= User.find(@chat.sender_id).first_name %></title>
-</head>
-<body class="bg-primary-subtle">
-    <br>
+
     <div class="container-sm card bg-secondary-subtle">
-        <h1 class="text-center card-title bg-danger-subtle"><%= User.find(@chat.sender_id).first_name %> & <%= User.find(@chat.receiver_id).first_name %></h1>
+        <h1 class="text-center card-title bg-danger-subtle"><%= @sender.first_name %> & <%= @receiver.first_name %></h1>
         <div class="card-body bg-secondary-subtle">
+            <ul>
             <li class="card-text bg-success-subtle">
                 Sender ID: <%=@chat.sender_id %><br>
             </li>
@@ -23,12 +15,42 @@
             <li class="card-text bg-warning-subtle">
                 Last updated on <%= @chat.updated_at %>
             </li>
+            </ul>
         </div>
         <br>
     </div>
-</body>
-<footer>
     <div class="container-sm">
-        <button type="button" class="btn bg-light"><%= link_to "Volver",chats_path %></button>
+        <table class="table">
+            <tr class="col-12">
+                <th class="bg-primary-subtle col-3">Sender</th>
+                <th class="bg-primary-subtle col-3">Receiver</th>
+                <th class="bg-primary-subtle col-6">Message</th>
+            </tr>
+            <% @messages.each do |message|%>
+                <tr class="col-12">
+                    <%if message.user_id == @sender.id%>
+                        <td>
+                            <%=@sender.first_name%>
+                        </td>
+                        <td>
+                            <%=@receiver.first_name%>
+                        </td>
+                    <%end%>
+                    <%if message.user_id == @receiver.id%>
+                        <td>
+                            <%=@receiver.first_name%>
+                        </td>
+                        <td>
+                            <%=@sender.first_name%>
+                        </td>
+                    <%end%>
+                    <td><%=message.body%><td>
+                </tr>
+            <% end%>
+        </table>
     </div>
-</footer>
+
+    <div class="container-sm">
+        <%= link_to "Edit", edit_chat_path(@chat), class:"btn btn-info"%>
+        <%= link_to "Back",chats_path, class:"btn bg-light" %>
+    </div>

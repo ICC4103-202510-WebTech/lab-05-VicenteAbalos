@@ -15,6 +15,7 @@
             <tr>
                 <th>User</th>
                 <th>User Page</th>
+                <th>Edit User</th>
             </tr>
             <% @users.each do |user| %>
                 <tr>
@@ -22,13 +23,16 @@
                         <%= user.first_name %>
                     </td>
                     <td>
-                        <button type="button" class="btn bg-primary-subtle"><%= link_to("View",user_path(user)) %></button>
+                        <%= link_to("View",user_path(user), class:"btn bg-primary-subtle") %>
+                    </td>
+                    <td>
+                        <%= link_to("Edit",edit_user_path(user), class:"btn bg-primary-subtle") %>
                     </td>
                 </tr>
             <% end%>
         </table>
     </div>
-    <div>
-    <button type="button" class="btn bg-success-subtle"><%= link_to "New User", new_user_path %></button>
+    <div class="container-sm">
+        <%= link_to "New User", new_user_path, class:"btn bg-success-subtle" %>
     </div>
 </body>

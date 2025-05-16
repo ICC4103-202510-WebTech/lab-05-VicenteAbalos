@@ -1,7 +1,9 @@
 class User <ApplicationRecord
     has_many :messages
-    has_many :messages, through: :chats
-    validates :email, presence: {message: "You must write down your name"}, uniqueness: {message: "already taken by another user"}
+    has_many :chats
+    has_many :messagesc, through: :chats, source: :messages
+    validates :first_name, presence: true
+    validates :email, presence: {message: "You must write down your mail"}, uniqueness: {message: "already taken by another user"}
     before_validation :normalize_name
 
     private

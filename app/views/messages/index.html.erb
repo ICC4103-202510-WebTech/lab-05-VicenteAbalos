@@ -15,6 +15,7 @@
             <tr>
                 <th>Message</th>
                 <th>Message Page</th>
+                <th>Edit Message</th>
             </tr>
             <% @messages.each do |message| %>
                 <tr>
@@ -22,13 +23,16 @@
                         Message for Chat #<%= message.chat_id %>
                     </td>
                     <td>
-                        <button type="button" class="btn bg-primary-subtle"><%= link_to("View",message_path(message)) %></button>
+                        <%= link_to("View",message_path(message), class:"btn bg-primary-subtle") %>
+                    </td>
+                    <td>
+                        <%= link_to("Edit",edit_message_path(message), class:"btn bg-primary-subtle") %>
                     </td>
                 </tr>
             <% end%>
         </table>
     </div>
-    <div>
-        <button type="button" class="btn bg-success-subtle"><%= link_to "New Message", new_message_path %></button>
+    <div class="container-sm">
+        <%= link_to "New Message", new_message_path, class:"btn bg-success-subtle" %>
     </div>
 </body>

@@ -1,0 +1,19 @@
+<div class="container-sm">
+    <%= form_with model: @message do |form| %>
+        <div class="container-sm d-flex p-2">
+            <%=form.label :chat_id, "Chat" %>
+            <%=form.select :chat_id, Chat.all.collect { |chat| [("Chat by "+User.find(chat.sender_id).first_name+" & "+User.find(chat.receiver_id).first_name),chat.id]}, class: 'form-control'%>
+        </div>
+        <div class="container-sm d-flex p-2">
+            <%=form.label :user_id, "User" %>
+            <%=form.select :user_id, User.all.collect { |user| [user.first_name,user.id]}, class: 'form-control'%>
+        </div>
+        <div>
+            <%=form.label :body, "Body"%>
+            <%=form.text_field :body, class: 'form-control'%>
+        </div>
+        <div>
+            <%= form.submit "Save" %>
+        </div>
+    <% end %>
+</div>
