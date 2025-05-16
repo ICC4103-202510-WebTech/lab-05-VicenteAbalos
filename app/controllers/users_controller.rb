@@ -2,7 +2,6 @@ class UsersController <ApplicationController
     before_action :set_user, only:[:show, :edit, :update]
     def index
         @users = User.all
-        @messages= Message.all
     end
     def show
         @chats = Chat.all.select {|c| c.sender_id==@user.id}

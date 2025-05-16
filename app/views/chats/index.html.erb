@@ -20,7 +20,7 @@
             <% @chats.each do |chat| %>
                 <tr>
                     <td>
-                        Chat from <%= User.find(chat.sender_id).first_name %> to <%= User.find(chat.receiver_id).first_name %>
+                        Chat from <%= chat.sender.first_name %> to <%= chat.receiver.first_name %>
                     </td>
                     <td>
                         <%= link_to("View", chat_path(chat), class:"btn bg-primary-subtle") %>

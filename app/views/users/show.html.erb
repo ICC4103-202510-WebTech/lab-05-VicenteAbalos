@@ -29,13 +29,13 @@
                 <tr>
                     <td><%= chat.id %></td>
                     <td><%= @user.first_name %></td>
-                    <td><%= User.find(chat.receiver_id).first_name %></td>
+                    <td><%= chat.receiver.first_name %></td>
                 </tr>
             <% end %>
             <% @chatss.each do |chat| %>
                 <tr>
                     <td><%= chat.id %></td>
-                    <td><%= User.find(chat.sender_id).first_name %></td>
+                    <td><%= chat.sender.first_name %></td>
                     <td><%= @user.first_name %></td>
                 </tr>
             <% end %>

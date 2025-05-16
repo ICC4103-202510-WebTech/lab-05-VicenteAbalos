@@ -8,7 +8,7 @@
 </head>
 <body class="bg-primary-subtle">
     <div class="container-sm card bg-secondary-subtle">
-        <h1 class="text-center card-title bg-danger-subtle"><%= User.find(Chat.find(@message.chat_id).sender_id).first_name %>'s Message to <%= User.find(Chat.find(@message.chat_id).receiver_id).first_name %></h1>
+        <h1 class="text-center card-title bg-danger-subtle"><%= @message.chat.sender.first_name %>'s Message to <%= @message.chat.receiver.first_name %></h1>
         <div class="card-body bg-secondary-subtle">
             <li class="card-text bg-warning-subtle">
                 Chat ID: <%=@message.chat_id %>
