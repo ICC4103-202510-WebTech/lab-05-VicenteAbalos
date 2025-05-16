@@ -16,6 +16,7 @@
                 <th>User</th>
                 <th>User Page</th>
                 <th>Edit User</th>
+                <th>Message Count</th>
             </tr>
             <% @users.each do |user| %>
                 <tr>
@@ -27,6 +28,9 @@
                     </td>
                     <td>
                         <%= link_to("Edit",edit_user_path(user), class:"btn bg-primary-subtle") %>
+                    </td>
+                    <td>
+                        <%= user.messages.count%>
                     </td>
                 </tr>
             <% end%>
