@@ -1,7 +1,9 @@
 class MessagesController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_message, only:[:show, :edit, :update]
+    authorize_resource
     def index
-        @messages = Message.all
+        @messages = Message.accessible_by(current_ability)
     end
     def show
         @sender=User.find(@message.user_id)
@@ -11,6 +13,8 @@ class MessagesController < ApplicationController
     end
     def new
         @message = Message.new
+        @chat=Chat.accessible_by(current_ability)
+        @users=current_user
     end
     def create
         @message = Message.new message_params
@@ -23,6 +27,8 @@ class MessagesController < ApplicationController
         end
     end
     def edit
+        @chat=Chat.accessible_by(current_ability)
+        @users=current_user
     end
     def update
         if @message.update message_params

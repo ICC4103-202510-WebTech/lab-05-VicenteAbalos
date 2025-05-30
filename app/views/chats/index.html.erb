@@ -18,17 +18,21 @@
                 <th>Edit Chat</th>
             </tr>
             <% @chats.each do |chat| %>
+                <%if can? :show, chat %>
                 <tr>
                     <td>
                         Chat from <%= chat.sender.first_name %> to <%= chat.receiver.first_name %>
                     </td>
                     <td>
-                        <%= link_to("View", chat_path(chat), class:"btn bg-primary-subtle") %>
+                        <%if can? :show, chat%>
+                            <%= link_to("View", chat_path(chat), class:"btn bg-primary-subtle") %>
+                        <%end%>
                     </td>
                     <td>
                         <%= link_to("Edit",edit_chat_path(chat), class: "btn bg-primary-subtle")%>
                     </td>
                 </tr>
+                <%end%>
             <% end%>
         </table>
     </div>

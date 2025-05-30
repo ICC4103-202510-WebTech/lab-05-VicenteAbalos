@@ -26,7 +26,9 @@
                         <%= link_to("View",message_path(message), class:"btn bg-primary-subtle") %>
                     </td>
                     <td>
-                        <%= link_to("Edit",edit_message_path(message), class:"btn bg-primary-subtle") %>
+                        <%if can? :edit, message%>
+                            <%= link_to("Edit",edit_message_path(message), class:"btn bg-primary-subtle") %>
+                        <%end%>
                     </td>
                 </tr>
             <% end%>

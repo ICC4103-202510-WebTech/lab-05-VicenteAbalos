@@ -9,6 +9,9 @@
 <body>
     <div class="container-fluid bg-primary">
         <h1>User Index</h1>
+        <%unless user_signed_in?%>
+            <%=link_to "Sign In", user_session_path, class:"btn btn-success"%>
+        <%end%>
     </div>
     <div class="container-sm bg-secondary">
         <table class="table table-striped">
@@ -24,10 +27,14 @@
                         <%= user.first_name %>
                     </td>
                     <td>
-                        <%= link_to("View",user_path(user), class:"btn bg-primary-subtle") %>
+                        <% if can? :show, user %>
+                            <%= link_to("View",user_path(user), class:"btn bg-primary-subtle") %>
+                        <%end%>
                     </td>
                     <td>
-                        <%= link_to("Edit",edit_user_path(user), class:"btn bg-primary-subtle") %>
+                        <% if user==current_user %>
+                            <%= link_to("Edit",edit_user_registration_path(user), class:"btn bg-primary-subtle") %>
+                        <%end%>
                     </td>
                     <td>
                         <%= user.messages.count%>
@@ -37,6 +44,8 @@
         </table>
     </div>
     <div class="container-sm">
-        <%= link_to "New User", new_user_path, class:"btn bg-success-subtle" %>
+        <% unless user_signed_in? %>
+        <%= link_to "New User", new_user_registration_path, class:"btn bg-success-subtle" %>
+        <%end%>
     </div>
 </body>

@@ -2,11 +2,11 @@
     <%= form_with model: @message do |form| %>
         <div class="container-sm d-flex p-2">
             <%=form.label :chat_id, "Chat" %>
-            <%=form.select :chat_id, Chat.all.collect { |chat| [("Chat by "+User.find(chat.sender_id).first_name+" & "+User.find(chat.receiver_id).first_name),chat.id]}, class: 'form-control'%>
+            <%=form.select :chat_id, @chat.collect { |chat| [("Chat by "+User.find(chat.sender_id).first_name+" & "+User.find(chat.receiver_id).first_name),chat.id]}, class: 'form-control'%>
         </div>
         <div class="container-sm d-flex p-2">
             <%=form.label :user_id, "User" %>
-            <%=form.select :user_id, User.all.collect { |user| [user.first_name,user.id]}, class: 'form-control'%>
+            <%=form.select :user_id, [[@users.first_name,@users.id]], class: 'form-control'%>
         </div>
         <div>
             <%=form.label :body, "Body"%>

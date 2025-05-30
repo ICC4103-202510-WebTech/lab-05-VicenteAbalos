@@ -55,7 +55,9 @@
 </body>
 <footer>
     <div class="container-sm">
-        <%= link_to "Edit", edit_user_path(@user), class:"btn btn-info"%>
+        <% if @user==current_user %>
+            <%= link_to "Edit", edit_user_path(@user), class:"btn btn-info"%>
+        <%end%>
         <%= link_to "Back",users_path, class:"btn btn-light" %>
     </div>
 </footer>

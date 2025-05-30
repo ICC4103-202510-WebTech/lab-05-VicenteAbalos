@@ -1,7 +1,9 @@
 class ChatsController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_chat, only:[:show, :edit, :update]
+    authorize_resource
     def index
-        @chats = Chat.all
+        @chats = Chat.accessible_by(current_ability)
     end
     def show
         @sender=@chat.sender
@@ -10,6 +12,7 @@ class ChatsController < ApplicationController
     end
     def new
         @chat = Chat.new
+        @user = current_user
     end
     def create
         @chat = Chat.new chat_params
@@ -22,6 +25,7 @@ class ChatsController < ApplicationController
         end
     end
     def edit
+        @user=current_user
     end
     def update
         if @chat.update chat_params
