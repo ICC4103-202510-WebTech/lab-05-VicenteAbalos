@@ -3,7 +3,8 @@ class ChatsController < ApplicationController
     before_action :set_chat, only:[:show, :edit, :update]
     authorize_resource
     def index
-        @chats = Chat.accessible_by(current_ability)
+        #@chats = Chat.accessible_by(current_ability)
+        @chats=Chat.member(current_user)
     end
     def show
         @sender=@chat.sender

@@ -21,7 +21,7 @@
                 <%if can? :show, chat %>
                 <tr>
                     <td>
-                        Chat from <%= chat.sender.first_name %> to <%= chat.receiver.first_name %>
+                        Chat between <%= current_user.first_name+" "+current_user.last_name %> and <%= chat.return_name(current_user)%>
                     </td>
                     <td>
                         <%if can? :show, chat%>

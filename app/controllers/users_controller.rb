@@ -4,6 +4,10 @@ class UsersController <ApplicationController
     authorize_resource
     def index
         @users = User.accessible_by(current_ability)
+        @user=current_user
+        if user_signed_in?
+            redirect_to user_path(@user)
+        end
     end
     def show
         @chats = Chat.all.select {|c| c.sender_id==@user.id}

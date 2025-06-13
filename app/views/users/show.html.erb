@@ -56,8 +56,10 @@
 <footer>
     <div class="container-sm">
         <% if @user==current_user %>
-            <%= link_to "Edit", edit_user_path(@user), class:"btn btn-info"%>
+            <%= link_to "Edit", edit_user_registration_path(@user), class:"btn btn-info"%>
         <%end%>
-        <%= link_to "Back",users_path, class:"btn btn-light" %>
+        <% unless user_signed_in?%>
+            <%= link_to "Back",users_path, class:"btn btn-light" %>
+        <%end%>
     </div>
 </footer>
